@@ -11,7 +11,7 @@ const cors = require('cors');
 const app = express()
 app.use(cors())
 
-const PORT = 3000
+const PORT = process.env.PORT || 3000
 
 dotEnv.config()
 
@@ -27,4 +27,8 @@ app.use('/uploads', express.static('uploads'));
 
 app.listen(PORT, () => {
     console.log(`Server started and running at ${PORT}`)
+})
+
+app.use('/', (req, res) => {
+    res.send("<h1> Welcome to Hungry </h1>");
 })
